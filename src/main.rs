@@ -14,7 +14,7 @@ fn round_decimal(number: f64, place: i32) -> f64 {
 
 enum ConversionType {
     CelciusToFahrenheit = 0,
-    Fahrenheit_Celcius = 1
+    FahrenheitToCelcius = 1
 }
 
 fn convert_temperature(temperature: f64, conversion_type: ConversionType ) -> f64 {
@@ -22,7 +22,7 @@ fn convert_temperature(temperature: f64, conversion_type: ConversionType ) -> f6
         ConversionType::CelciusToFahrenheit => {
             round_decimal(((temperature - 32.0) * 5.0) / 9.0, 2)
         },
-        ConversionType::Fahrenheit_Celcius => {
+        ConversionType::FahrenheitToCelcius => {
             round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
         },
         _ => 0.0
@@ -43,10 +43,10 @@ mod tests {
 
     #[test]
     fn test_celcius_to_fahrenheit() {
-        assert_eq!(convert_temperature(32.0, ConversionType::Fahrenheit_Celcius), 89.6);
-        assert_eq!(convert_temperature(18.0, ConversionType::Fahrenheit_Celcius), 64.4);
-        assert_eq!(convert_temperature(100.0, ConversionType::Fahrenheit_Celcius), 212.0);
-        assert_eq!(convert_temperature(0.0, ConversionType::Fahrenheit_Celcius), 32.0);
+        assert_eq!(convert_temperature(32.0, ConversionType::FahrenheitToCelcius), 89.6);
+        assert_eq!(convert_temperature(18.0, ConversionType::FahrenheitToCelcius), 64.4);
+        assert_eq!(convert_temperature(100.0, ConversionType::FahrenheitToCelcius), 212.0);
+        assert_eq!(convert_temperature(0.0, ConversionType::FahrenheitToCelcius), 32.0);
     }
 }
 
@@ -69,7 +69,7 @@ fn get_conversion_type() -> ConversionType {
     loop {
         let input_conversion_type: String = get_input("Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: ");
         match input_conversion_type.to_lowercase().as_str() {
-            "c" => break ConversionType::Fahrenheit_Celcius,
+            "c" => break ConversionType::FahrenheitToCelcius,
             "f" => break ConversionType::CelciusToFahrenheit,
             _ => println!("Invalid input. Please try again.")
         }
@@ -88,12 +88,12 @@ fn main() {
         // convert to fahrenheit
         // display, "The temperature in Fahrenheit is {}"
     let from_conversion: &str = match conversion_type {
-        ConversionType::Fahrenheit_Celcius => "Fahrenheit",
+        ConversionType::FahrenheitToCelcius => "Fahrenheit",
         ConversionType::CelciusToFahrenheit => "Celcius",
     }
 
     let to_conversion: &str = match conversion_type {
-        ConversionType::Fahrenheit_Celcius => "Celcius",
+        ConversionType::FahrenheitToCelcius => "Celcius",
         ConversionType::CelciusToFahrenheit => "Fahrenheit",
     }
 
