@@ -24,6 +24,11 @@ fn celcius_to_fahrenheit(temperature: f64) -> f64 {
     round_decimal(fahrenheit, 2)
 }
 
+enum Temperature {
+    Celcius = 0,
+    Fahrenheit = 1
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
