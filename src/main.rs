@@ -87,6 +87,16 @@ fn main() {
         // prompt for celcius_temperature, "Please enter the temperature in Celcius: "
         // convert to fahrenheit
         // display, "The temperature in Fahrenheit is {}"
+    let from_conversion: &str = match conversion_type {
+        ConversionType::Fahrenheit_Celcius => "Fahrenheit",
+        ConversionType::Celcius_Fahrenheit => "Celcius",
+    }
+
+    let to_conversion: &str = match conversion_type {
+        ConversionType::Fahrenheit_Celcius => "Celcius",
+        ConversionType::Celcius_Fahrenheit => "Fahrenheit",
+    }
+
     let temperature: f64 = get_input("Please enter the temperature in {}: ", from_conversion);
     let converted: f64 = fahrenheit_to_celcius(temperature);
     println!("The temperature in {} is {}", to_conversion, converted);
