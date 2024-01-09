@@ -6,12 +6,13 @@
 
 fn fahrenheit_to_celcius(temperature: f64) -> f64 {
     // (F − 32) × 5 / 9
-    let celcius: f64 = ((temperature - 32) * 5) / 9;
+    let celcius: f64 = ((temperature - 32.0) * 5.0) / 9.0;
     celcius
 }
 
 fn celcius_to_fahrenheit(temperature: f64) -> f64 {
     // (C × 9 / 5) + 32
+    10.0
 }
 
 #[cfg(test)]
