@@ -12,7 +12,7 @@ fn round_decimal(number: f64, place: i32) -> f64 {
 fn fahrenheit_to_celcius(temperature: f64) -> f64 {
     // (F − 32) × 5 / 9
     let celcius: f64 = ((temperature - 32.0) * 5.0) / 9.0;
-    celcius
+    round_decimal(celcius, 2)
 }
 
 fn celcius_to_fahrenheit(temperature: f64) -> f64 {
