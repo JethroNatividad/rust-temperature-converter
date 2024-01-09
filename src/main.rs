@@ -12,18 +12,6 @@ fn round_decimal(number: f64, place: i32) -> f64 {
     (number * multiplier).round() / multiplier
 }
 
-fn fahrenheit_to_celcius(temperature: f64) -> f64 {
-    // (F − 32) × 5 / 9
-    let celcius: f64 = ((temperature - 32.0) * 5.0) / 9.0;
-    round_decimal(celcius, 2)
-}
-
-fn celcius_to_fahrenheit(temperature: f64) -> f64 {
-    // (C × 9 / 5) + 32
-    let fahrenheit: f64 = ((temperature * 9.0) / 5.0) + 32.0;
-    round_decimal(fahrenheit, 2)
-}
-
 enum TemperatureConvertion {
     Celcius_Fahrenheit = 0,
     Fahrenheit_Celcius = 1
