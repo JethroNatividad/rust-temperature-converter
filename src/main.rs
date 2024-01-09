@@ -12,17 +12,17 @@ fn round_decimal(number: f64, place: i32) -> f64 {
     (number * multiplier).round() / multiplier
 }
 
-enum TemperatureConvertion {
+enum ConversionType {
     Celcius_Fahrenheit = 0,
     Fahrenheit_Celcius = 1
 }
 
-fn convert_temperature(temperature: f64, convertion: TemperatureConvertion ) -> f64 {
-    match convertion {
-        TemperatureConvertion::Celcius_Fahrenheit => {
+fn convert_temperature(temperature: f64, conversion_type: ConversionType ) -> f64 {
+    match conversion_type {
+        ConversionType::Celcius_Fahrenheit => {
             round_decimal(((temperature - 32.0) * 5.0) / 9.0, 2)
         },
-        TemperatureConvertion::Fahrenheit_Celcius => {
+        ConversionType::Fahrenheit_Celcius => {
             round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
         },
         _ => 0.0
@@ -35,18 +35,18 @@ mod tests {
 
     #[test]
     fn test_fahrenheit_to_celcius() {
-        assert_eq!(convert_temperature(32.0, TemperatureConvertion::Celcius_Fahrenheit), 0.0);
-        assert_eq!(convert_temperature(18.0, TemperatureConvertion::Celcius_Fahrenheit), -7.78);
-        assert_eq!(convert_temperature(100.0, TemperatureConvertion::Celcius_Fahrenheit), 37.78);
-        assert_eq!(convert_temperature(0.0, TemperatureConvertion::Celcius_Fahrenheit), -17.78);
+        assert_eq!(convert_temperature(32.0, ConversionType::Celcius_Fahrenheit), 0.0);
+        assert_eq!(convert_temperature(18.0, ConversionType::Celcius_Fahrenheit), -7.78);
+        assert_eq!(convert_temperature(100.0, ConversionType::Celcius_Fahrenheit), 37.78);
+        assert_eq!(convert_temperature(0.0, ConversionType::Celcius_Fahrenheit), -17.78);
     }
 
     #[test]
     fn test_celcius_to_fahrenheit() {
-        assert_eq!(convert_temperature(32.0, TemperatureConvertion::Fahrenheit_Celcius), 89.6);
-        assert_eq!(convert_temperature(18.0, TemperatureConvertion::Fahrenheit_Celcius), 64.4);
-        assert_eq!(convert_temperature(100.0, TemperatureConvertion::Fahrenheit_Celcius), 212.0);
-        assert_eq!(convert_temperature(0.0, TemperatureConvertion::Fahrenheit_Celcius), 32.0);
+        assert_eq!(convert_temperature(32.0, ConversionType::Fahrenheit_Celcius), 89.6);
+        assert_eq!(convert_temperature(18.0, ConversionType::Fahrenheit_Celcius), 64.4);
+        assert_eq!(convert_temperature(100.0, ConversionType::Fahrenheit_Celcius), 212.0);
+        assert_eq!(convert_temperature(0.0, ConversionType::Fahrenheit_Celcius), 32.0);
     }
 }
 
@@ -64,6 +64,8 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
         }
     }
 }
+
+fn get_conversion() -> Conversion
 
 fn main() {
     // Prompt for conversion_type, "Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: "
