@@ -4,8 +4,11 @@
 // Process: convert temp
 // Output: The temperature in {Celsius | Fahrenheit} is {}
 
-#[cfg(test)]
+fn fahrenheit_to_celcius(temperature: f64) -> f64 {
+    // (F − 32) × 5 / 9
+}
 
+#[cfg(test)]
 mod tests {
     use super::*;
 
