@@ -35,10 +35,10 @@ mod tests {
 
     #[test]
     fn test_fahrenheit_to_celcius() {
-        assert_eq!(fahrenheit_to_celcius(32.0), 0.0);
-        assert_eq!(fahrenheit_to_celcius(18.0), -7.78);
-        assert_eq!(fahrenheit_to_celcius(100.0), 37.78);
-        assert_eq!(fahrenheit_to_celcius(0.0), -17.78);
+        assert_eq!(convert_temperature(32.0, TemperatureConvertion::Celcius_Fahrenheit), 0.0);
+        assert_eq!(convert_temperature(18.0, TemperatureConvertion::Celcius_Fahrenheit), -7.78);
+        assert_eq!(convert_temperature(100.0, TemperatureConvertion::Celcius_Fahrenheit), 37.78);
+        assert_eq!(convert_temperature(0.0, TemperatureConvertion::Celcius_Fahrenheit), -17.78);
     }
 
     #[test]
