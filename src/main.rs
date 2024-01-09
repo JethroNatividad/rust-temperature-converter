@@ -20,10 +20,10 @@ enum ConversionType {
 fn convert_temperature(temperature: f64, conversion_type: ConversionType ) -> f64 {
     match conversion_type {
         ConversionType::CelciusToFahrenheit => {
-            round_decimal(((temperature - 32.0) * 5.0) / 9.0, 2)
+            round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
         },
         ConversionType::FahrenheitToCelcius => {
-            round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
+            round_decimal(((temperature - 32.0) * 5.0) / 9.0, 2)
         },
     }
 }
@@ -34,18 +34,18 @@ mod tests {
 
     #[test]
     fn test_fahrenheit_to_celcius() {
-        assert_eq!(convert_temperature(32.0, ConversionType::CelciusToFahrenheit), 0.0);
-        assert_eq!(convert_temperature(18.0, ConversionType::CelciusToFahrenheit), -7.78);
-        assert_eq!(convert_temperature(100.0, ConversionType::CelciusToFahrenheit), 37.78);
-        assert_eq!(convert_temperature(0.0, ConversionType::CelciusToFahrenheit), -17.78);
+        assert_eq!(convert_temperature(32.0, ConversionType::FahrenheitToCelcius), 0.0);
+        assert_eq!(convert_temperature(18.0, ConversionType::FahrenheitToCelcius), -7.78);
+        assert_eq!(convert_temperature(100.0, ConversionType::FahrenheitToCelcius), 37.78);
+        assert_eq!(convert_temperature(0.0, ConversionType::FahrenheitToCelcius), -17.78);
     }
-
+    
     #[test]
     fn test_celcius_to_fahrenheit() {
-        assert_eq!(convert_temperature(32.0, ConversionType::FahrenheitToCelcius), 89.6);
-        assert_eq!(convert_temperature(18.0, ConversionType::FahrenheitToCelcius), 64.4);
-        assert_eq!(convert_temperature(100.0, ConversionType::FahrenheitToCelcius), 212.0);
-        assert_eq!(convert_temperature(0.0, ConversionType::FahrenheitToCelcius), 32.0);
+        assert_eq!(convert_temperature(32.0, ConversionType::CelciusToFahrenheit), 89.6);
+        assert_eq!(convert_temperature(18.0, ConversionType::CelciusToFahrenheit), 64.4);
+        assert_eq!(convert_temperature(100.0, ConversionType::CelciusToFahrenheit), 212.0);
+        assert_eq!(convert_temperature(0.0, ConversionType::CelciusToFahrenheit), 32.0);
     }
 }
 
