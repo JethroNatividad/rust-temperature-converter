@@ -24,9 +24,13 @@ fn celcius_to_fahrenheit(temperature: f64) -> f64 {
     round_decimal(fahrenheit, 2)
 }
 
-enum Temperature {
-    Celcius = 0,
-    Fahrenheit = 1
+enum TemperatureConvertion {
+    Celcius_Fahrenheit = 0,
+    Fahrenheit_Celcius = 1
+}
+
+fn convert_temperature(temperature: f64, convertion: TemperatureConvertion ) -> f64 {
+    
 }
 
 #[cfg(test)]
