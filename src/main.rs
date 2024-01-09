@@ -16,6 +16,14 @@ mod tests {
         assert_eq!(fahrenheit_to_celcius(100.0), 37.8);
         assert_eq!(fahrenheit_to_celcius(0.0), -17.8);
     }
+
+    #[test]
+    fn test_celcius_to_fahrenheit() {
+        assert_eq!(celcius_to_fahrenheit(32.0), 89.6);
+        assert_eq!(celcius_to_fahrenheit(18.0), 64.4);
+        assert_eq!(celcius_to_fahrenheit(100.0), 212.0);
+        assert_eq!(celcius_to_fahrenheit(0.0), 32.0);
+    }
 }
 
 fn main() {
