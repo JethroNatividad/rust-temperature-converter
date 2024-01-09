@@ -30,7 +30,15 @@ enum TemperatureConvertion {
 }
 
 fn convert_temperature(temperature: f64, convertion: TemperatureConvertion ) -> f64 {
-    
+    match convertion {
+        TemperatureConvertion::Celcius_Fahrenheit => {
+            round_decimal(((temperature - 32.0) * 5.0) / 9.0, 2)
+        },
+        TemperatureConvertion::Fahrenheit_Celcius => {
+            round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
+        },
+        _ => 0.0
+    }
 }
 
 #[cfg(test)]
