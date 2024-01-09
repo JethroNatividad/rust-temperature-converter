@@ -1,3 +1,6 @@
+use std::io;
+use std::io::Write;
+
 // Program to convert celcius to fahrenheit both ways.
 
 // Inputs: Fahrenheit to celcius or celcius to fahrenheit, temperature.
@@ -39,6 +42,21 @@ mod tests {
         assert_eq!(celcius_to_fahrenheit(18.0), 64.4);
         assert_eq!(celcius_to_fahrenheit(100.0), 212.0);
         assert_eq!(celcius_to_fahrenheit(0.0), 32.0);
+    }
+}
+
+fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
+    loop {
+        print!("{}", prompt);
+        io::stdout().flush().unwrap();
+
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read input");
+
+        match input.trim().parse() {
+            Ok(value) => break value,
+            Err(_) => println!("Invalid input. Please try again."),
+        }
     }
 }
 
