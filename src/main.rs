@@ -43,5 +43,13 @@ mod tests {
 }
 
 fn main() {
-    println!("Hello, world!");
-}
+    // Prompt for conversion_type, "Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: "
+    // if C
+        // prompt for fahrenheit_temperature, "Please enter the temperature in Fahrenheit: "
+        // convert to celcius
+        // display, "The temperature in Celsius is {}"
+    // if F
+        // prompt for celcius_temperature, "Please enter the temperature in Celcius: "
+        // convert to fahrenheit
+        // display, "The temperature in Fahrenheit is {}"
+} 
