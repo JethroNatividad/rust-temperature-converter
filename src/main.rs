@@ -25,7 +25,6 @@ fn convert_temperature(temperature: f64, conversion_type: ConversionType ) -> f6
         ConversionType::FahrenheitToCelcius => {
             round_decimal(((temperature * 9.0) / 5.0) + 32.0, 2)
         },
-        _ => 0.0
     }
 }
 
@@ -90,15 +89,15 @@ fn main() {
     let from_conversion: &str = match conversion_type {
         ConversionType::FahrenheitToCelcius => "Fahrenheit",
         ConversionType::CelciusToFahrenheit => "Celcius",
-    }
+    };
 
     let to_conversion: &str = match conversion_type {
         ConversionType::FahrenheitToCelcius => "Celcius",
         ConversionType::CelciusToFahrenheit => "Fahrenheit",
-    }
+    };
 
-    let temperature: f64 = get_input("Please enter the temperature in {}: ", from_conversion);
-    let converted: f64 = fahrenheit_to_celcius(temperature);
+    let temperature: f64 = get_input(&format!("Please enter the temperature in {}: ", from_conversion));
+    let converted: f64 = convert_temperature(temperature, conversion_type);
     println!("The temperature in {} is {}", to_conversion, converted);
     
 } 
