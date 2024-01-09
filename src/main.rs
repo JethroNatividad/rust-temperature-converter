@@ -65,11 +65,20 @@ fn get_input<T: std::str::FromStr>(prompt: &str) -> T {
     }
 }
 
-fn get_conversion() -> Conversion
+fn get_conversion_type() -> ConversionType {
+    loop {
+        let input_conversion_type: String = get_input("Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: ");
+        match input_conversion_type.to_lowercase().as_str() {
+            "c" => break ConversionType::Fahrenheit_Celcius,
+            "f" => break ConversionType::Celcius_Fahrenheit,
+            _ => println!("Invalid input. Please try again.")
+        }
+    }
+}
 
 fn main() {
     // Prompt for conversion_type, "Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: "
-    let input_conversion_type: String = get_input("Press C to convert from Fahrenheit to Celsius.\nPress F to convert from Celsius to Fahrenheit.\nYour choice: ");
+    let conversion_type: ConversionType = get_conversion_type();
     // if C
         // prompt for fahrenheit_temperature, "Please enter the temperature in Fahrenheit: "
         // convert to celcius
@@ -78,20 +87,8 @@ fn main() {
         // prompt for celcius_temperature, "Please enter the temperature in Celcius: "
         // convert to fahrenheit
         // display, "The temperature in Fahrenheit is {}"
-    match input_conversion_type.to_lowercase().as_str() {
-        "c" => {
-            let temperature: f64 = get_input("Please enter the temperature in Fahrenheit: ");
-            let converted: f64 = fahrenheit_to_celcius(temperature);
-            println!("The temperature in Celsius is {}", converted);
-        },
-        "f" => {
-            let temperature: f64 = get_input("Please enter the temperature in Celcius: ");
-            let converted: f64 = celcius_to_fahrenheit(temperature);
-            println!("The temperature in Fahrenheit is {}", converted);
-        },
-        _ => {
-            println!("Invalid type.");
-        }
-    }
+    let temperature: f64 = get_input("Please enter the temperature in {}: ", from_conversion);
+    let converted: f64 = fahrenheit_to_celcius(temperature);
+    println!("The temperature in {} is {}", to_conversion, converted);
     
 } 
