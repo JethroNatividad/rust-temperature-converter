@@ -8,6 +8,10 @@ fn fahrenheit_to_celcius(temperature: f64) -> f64 {
     // (F − 32) × 5 / 9
 }
 
+fn celcius_to_fahrenheit(temperature: f64) -> f64 {
+    // (C × 9 / 5) + 32
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
